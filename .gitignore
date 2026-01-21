@@ -7,3 +7,8 @@ build/
 *.log
 *.tmp
 *.env
+
+#Просто файл
+.gitignore
+
+echo "node_modules/" >> .gitignore
