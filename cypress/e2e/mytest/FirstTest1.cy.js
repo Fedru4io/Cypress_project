@@ -82,7 +82,7 @@
 //   })
 
 
-//Comment
+//Comment 1
 
 describe('Тесты приложения', () => {
     beforeEach(() => {
