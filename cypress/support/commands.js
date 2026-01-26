@@ -28,9 +28,17 @@ Cypress.Commands.add('login', () => {
     // Получаем данные из переменных окружения
     const username = Cypress.env('username')
     const password = Cypress.env('password')
-    
-    cy.visit("https://by01-vm46.topsoft.local/login")
-    
+   
+    cy.request({
+      method: 'POST',
+      url: 'https://by01-vm46.topsoft.local/api/auth/logout',
+      failOnStatusCode: false // игнорировать если endpoint не существует
+    })
+
+  cy.visit('https://by01-vm46.topsoft.local/login')
+
+
+     
     cy.get('[placeholder="Имя пользователя"][class="dx-texteditor-input"]')
       .type(username)
     
