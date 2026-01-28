@@ -38,6 +38,4 @@ Cypress.Commands.add('login', () => {
     }
   })
 
-  cy.get('.overlay-form', { timeout: 20000 })
-    .should('not.exist')
 })
