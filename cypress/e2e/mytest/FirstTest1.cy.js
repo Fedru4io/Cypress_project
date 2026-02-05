@@ -16,9 +16,6 @@ describe('Тесты приложения', () => {
     
     it('SHOULD', () => {
 
-        //cy.viewport(1200, 800)
-        //cy.get ('rui-tile-menu').find ('div').eq ('1')
-      //  cy.contains('Финансово-расчетные операции');
     })
   
 
