@@ -35,6 +35,12 @@ Cypress.Commands.add('login', () => {
     
     cy.get('[placeholder="Имя пользователя"][class="dx-texteditor-input"]')
       .type(username)
+      .should ('be.visible')
+
+      //   cy.get('[placeholder="Имя пользователя"][class="dx-texteditor-input"]')
+      // .type(username).then (input=>{
+      //   expect(input).to.have.value('bychenok')
+      // })
     
     cy.get('[placeholder="Пароль"][class="dx-texteditor-input"]')
       .type(password, { log: false }) // Скрываем пароль в логах
@@ -57,10 +63,15 @@ Cypress.Commands.add('login', () => {
           cy.get('body').then(($body) => {
             // Проверяем, есть ли элемент с aria-label="ОК"
             if ($body.find('[aria-label="ОК"]').length > 0) {
+              cy.get('.overlay-form', { timeout: 20000 })
+              .should('not.exist') 
               // Если есть - кликаем на него
-              cy.get('[aria-label="ОК"]', { timeout: 20000 })
-                .should('be.visible')
+              cy.get('[aria-label="ОК"]', { timeout: 20000 }, {force:true})
+              //  .should('not.be.covered')
                 .click()
+
+                cy.get('.overlay-form', { timeout: 20000 })
+                .should('not.exist') 
            
                 cy.get('[aria-label="На главную"]', { timeout: 10000 })
                 .should('be.visible')
